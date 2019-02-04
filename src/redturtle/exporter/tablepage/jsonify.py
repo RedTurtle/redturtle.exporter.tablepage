@@ -39,4 +39,7 @@ class GetItemTablePage(BaseGetItemView):
         return [self.generate_row(data) for index, data in enumerate(storage)]
 
     def generate_row(self, data):
-        return {k: data.get(k) for k in self.headers}
+        row = {k: data.get(k) for k in self.headers}
+        row['__uuid__'] = data.get('__uuid__')
+        row['__creator__'] = data.get('__creator__')
+        return row
